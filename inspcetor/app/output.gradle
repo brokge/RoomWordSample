@@ -1,0 +1,21 @@
+
+task execTodo {
+    doFirst {
+        exec{
+            workingDir '.'
+            commandLine("whoami")
+            standardOutput =new ByteArrayOutputStream()
+            ext.output2 = {
+                return  standardOutput.toString()
+            }
+            ext.output1 = {
+                return standardOutput.toString()
+            }
+        }
+    }
+    doLast{
+        println("hahah:"+ext.output1())
+        println("hahah:"+ext.output2)
+    }
+}
+
